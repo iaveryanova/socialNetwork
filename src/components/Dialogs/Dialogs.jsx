@@ -5,7 +5,7 @@ import classes from './Dialog.module.css';
 const Dialogs = (props) => {
     return (
         <div>
-            Dialogs
+            Hello!
         </div>
     )
 }
