@@ -1,33 +1,43 @@
-import React from 'react';
-import classes from './MyPosts.module.css';
-import Post from './Post/Post';
+import React from "react";
+import classes from "./MyPosts.module.css";
+import Post from "./Post/Post";
 
 const MyPosts = (props) => {
+  let postsElement = props.postsData.map((el) => (
+    <Post message={el.message} likesCount={el.likesCount} />
+  ));
 
-    let postsElement = props.postsData.map((el) => <Post message={el.message} likesCount={el.likesCount}/>)
+  let newPostElement = React.createRef();
 
-    let addPost = () => {
-        let text = newPostElement.current.value;
-        // alert(text);
-        props.addPost(text);
-    }
+  let addPost = () => {
+    props.addPost();
+  };
 
-    let newPostElement = React.createRef();
-    
-    return (
 
-        <div className={classes.myPosts}>
-            <h3>MY POSTS</h3>
-            <div>
-                <div><textarea ref={newPostElement}></textarea></div>
-                <div><button onClick={ addPost }>Add post</button></div>
-            </div>
-            <div className={classes.posts}>
-                {postsElement}
-            </div>
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewPostText(text);
+  };
+  
+
+  return (
+    <div className={classes.myPosts}>
+      <h3>MY POSTS</h3>
+      <div>
+        <div>
+          <textarea
+            onChange={onPostChange}
+            ref={newPostElement}
+            value={props.newPostText}
+          />
         </div>
-
-    )
-}
+        <div>
+          <button onClick={addPost}>Add post</button>
+        </div>
+      </div>
+      <div className={classes.posts}>{postsElement}</div>
+    </div>
+  );
+};
 
 export default MyPosts;
