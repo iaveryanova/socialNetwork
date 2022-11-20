@@ -2,6 +2,20 @@ import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
+
+let addPostActionCreator = () => {
+  return {
+    type: 'ADD-POST'
+  }
+}
+
+let updateNewPostTextActionCreator = (text) => {
+  return {
+    type: 'UPDATE-NEW-POST-TEXT', 
+    newText: text
+  }
+}
+
 const MyPosts = (props) => {
   let postsElement = props.postsData.map((el) => (
     <Post message={el.message} likesCount={el.likesCount} />
@@ -11,14 +25,15 @@ const MyPosts = (props) => {
 
   let addPost = () => {
     // props.addPost();
-    props.dispatch({ type: 'ADD-POST' });
+    props.dispatch(addPostActionCreator());
   };
 
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
     // props.updateNewPostText(text);
-    let action = { type: 'UPDATE-NEW-POST-TEXT', newText: text };
+    // let action = { type: 'UPDATE-NEW-POST-TEXT', newText: text };
+    let action = updateNewPostTextActionCreator(text);
     props.dispatch(action);
   };
   
