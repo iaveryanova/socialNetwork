@@ -1,14 +1,14 @@
 // import { rerenderEntireTree } from './render';
-import state from './redux/state'
-import store from './redux/state';
+import state from './redux/store'
+import store from './redux/store';
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { addPost } from "./redux/state";
-import { updateNewPostText } from "./redux/state";
-import { subscribe } from './redux/state';
+import { addPost } from "./redux/store";
+import { updateNewPostText } from "./redux/store";
+import { subscribe } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 let rerenderEntireTree = (state) => {

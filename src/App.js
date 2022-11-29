@@ -8,7 +8,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { addPost } from "./redux/state";
+import { addPost } from "./redux/store";
 
 const App = (props) => {
   return (
