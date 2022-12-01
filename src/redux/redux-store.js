@@ -1,8 +1,15 @@
-import {createStore} from "redux";
+import {createStore, combineReducers} from "redux";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer"
 
-let store = createStore();
+let reducers = combineReducers({
+    profilePage:profileReducer, 
+    dialogsPage:dialogsReducer
+})
 
+let store = createStore(reducers);
 
+export default store;
 
 //store от redux
 // import {configureStore} from "@reduxjs/toolkit";
@@ -22,3 +29,5 @@ let store = createStore();
 // })
 
 // export default store
+
+
