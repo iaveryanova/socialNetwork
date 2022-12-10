@@ -9,6 +9,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { addPost } from "./redux/store";
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 const App = (props) => {
   return (
@@ -29,8 +30,11 @@ const App = (props) => {
             />
             <Route
               path="/dialogs/*"
-              element={<Dialogs store={props.store} 
-              dispatch={props.dispatch} />}
+              element={
+              <DialogsContainer 
+                store={props.store} 
+                dispatch={props.dispatch} 
+              />}
             />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
