@@ -9,16 +9,15 @@ import reportWebVitals from "./reportWebVitals";
 import { addPost } from "./redux/store";
 import { updateNewPostText } from "./redux/store";
 import { subscribe } from './redux/store';
+import StoreContext from './StoreContext';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 let rerenderEntireTree = (state) => {
   root.render(
     <React.StrictMode>
-      <App
-        store={store}
-        state={state}
-        dispatch={store.dispatch.bind(store)}
-      />  
+      <StoreContext.Provider value={store}>
+      <App />  
+      </StoreContext.Provider>
     </React.StrictMode>
   );
   reportWebVitals();
